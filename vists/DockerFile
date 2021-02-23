@@ -1,17 +1,9 @@
 FROM node:alpine
 
-#this will make sure the folder contents are not copied to the root folder of the container
 WORKDIR '/app'
 
-# copy only the json file, then copying the entire directory
 COPY package.json .
-
-# Run the node installation command
 RUN npm install
-
-# Copy the current working directory into the working directory
-# By doing this the dependies are not loaded continously if there is a change only in the index.js file
 COPY . .
 
-# Run the npm start command
-CMD ["npm" ,"start"]
+CMD ["npm","start"]
